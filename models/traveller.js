@@ -32,12 +32,21 @@ Traveller.prototype.calculateTotalDistanceTravelled = function () {
   }, 0);
 };
 
+// Traveller.prototype.getUniqueModesOfTransport = function () {
+//   const uniqMode = this.journeys.map( (journey) => {
+//     return journey.transport;
+//   });
+//   return uniqMode.reduce( (unique, item) => unique.includes(item) ? unique : [...unique, item], [] );
+// };
+
+//Rewritten using newer way of removing duplicates - 'Set'
 Traveller.prototype.getUniqueModesOfTransport = function () {
   const uniqMode = this.journeys.map( (journey) => {
     return journey.transport;
   });
-  return uniqMode.reduce( (unique, item) => unique.includes(item) ? unique : [...unique, item], [] );
+  return [...new Set(uniqMode)];
 };
+
 
 
 module.exports = Traveller;
